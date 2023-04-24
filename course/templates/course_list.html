@@ -1,0 +1,88 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Course List
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3" style="margin-top: 70px!important;">
+    <h1>Course List</h1>
+
+    <div class="row mt-4">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Top 5 Popular Courses</h3>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th>Title</th>
+                  <th>Teacher</th>
+                  <th>Clicks</th>
+                  <th>Difficulty</th>
+                </tr>
+              </thead>
+              <tbody>
+              {% for course in hot_courses %}
+                <tr>
+                  <td>{{ course.title }}</td>
+                  <td>{{ course.teacher }}</td>
+                  <td>{{ course.click }}</td>
+                  <td>{{ course.difficulty }}</td>
+                </tr>
+              {% empty %}
+                <tr>
+                  <td colspan="4">No popular courses found.</td>
+                </tr>
+              {% endfor %}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h3 class="card-title">Sort by:</h3>
+            <div class="btn-group" role="group" aria-label="Sort By">
+              <a href="?sort=hot" class="btn btn-outline-secondary {% if sort == 'hot' %}active{% endif %}">Popularity</a>
+              <a href="?sort=difficulty" class="btn btn-outline-secondary {% if sort == 'difficulty' %}active{% endif %}">Difficulty</a>
+              <a href="?sort=title" class="btn btn-outline-secondary {% if sort == 'title' %}active{% endif %}">Alphabetical</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="table table-striped mt-4">
+      <thead>
+        <tr>
+          <th>Title</th>
+          <th>Teacher</th>
+          <th>Clicks</th>
+          <th>Difficulty</th>
+        </tr>
+      </thead>
+      <tbody>
+      {% for course in all_courses %}
+        <tr>
+          <td><a href="{% url 'course:course_detail' course.pk %}">{{ course.title }}</a></td>
+          <td>{{ course.teacher }}</td>
+          <td>{{ course.click }}</td>
+          <td>{{ course.difficulty }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="4">No courses found.</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+
+    <div class="pagination mt-4">
+      {{ all_courses.paginator }}
+    </div>
+  </div>
+{% endblock %}

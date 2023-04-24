@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+<!--页面标题-->
+{% block title %}
+    MyCourse|Home
+{% endblock %}
+
+{% block header_extend %}    
+    <link rel="stylesheet" href="{% static 'home.css' %}"> 
+{% endblock %}
+
+{% block nav_home_active %}active{% endblock %}
+
+<!--页面内容-->
+{% block content %}
+    <h3 class="home_content">Welcome to My Courses</h3>  
+    <div class="container">
+        <form action="{% url 'search_results' %}" method="GET">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" placeholder="Search courses..." name="query">
+                <button class="btn btn-outline-secondary" type="submit" id="button-addon2">Search</button>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+

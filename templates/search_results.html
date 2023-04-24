@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+  Search Results
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3">
+    <h1 class="mb-3">Search Results for "{{ query }}"</h1>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>Title</th>
+            <th>Teacher</th>
+            <th>Clicks</th>
+            <th>Difficulty</th>
+          </tr>
+        </thead>
+        <tbody>
+        {% for course in results %}
+          <tr>
+            <td><a href="{% url 'course:course_detail' course.pk %}">{{ course.title }}</a></td>
+            <td>{{ course.teacher }}</td>
+            <td>{{ course.click }}</td>
+            <td>{{ course.difficulty }}</td>
+          </tr>
+        {% empty %}
+          <tr>
+            <td colspan="4">No results found.</td>
+          </tr>
+        {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  {{ course.title }}
+{% endblock %}
+
+{% block header_extend %}    
+    <link rel="stylesheet" href="{% static 'detail.css' %}"> 
+{% endblock %}
+
+{% block content %}
+  <div class="container mt-3" style="margin-top: 70px!important;">
+    <h1 class="card-title">{{ course.title }}</h1>
+    <div class="card mt-3">
+        <div class="card-body">
+            <p class="card-text"><strong>Description:</strong> {{ course.description }}</p>
+            <p class="card-text"><strong>Teacher:</strong> {{ course.teacher }}</p>
+            <p class="card-text"><strong>Clicks:</strong> {{ course.click }}</p>
+            <p class="card-text"><strong>Difficulty:</strong> {{ course.get_difficulty_display }}</p>
+            {% if course.comment %}
+                <p class="card-text"><strong>Comment:</strong> {{ course.comment }}</p>
+            {% endif %}
+            <a href="{% url 'course:add_comment' course_id=course.id %}" class="btn btn-primary">Add Comment</a>
+             <a href="{% url 'course:delete_comment' course_id=course.id %}" class="btn btn-danger">Delete Comment</a>
+            <p class="card-text"><strong>Created at:</strong> {{ course.created_at|date:"Y-m-d H:i" }}</p>
+            <p class="card-text"><strong>Updated at:</strong> {{ course.updated_at|date:"Y-m-d H:i" }}</p>
+            <a href="{% url 'course:delete_course' course_id=course.id %}" class="btn btn-danger">Delete Course</a><br>
+            <a href="{% url 'course:course_list' %}" class="btn btn-secondary mt-3">Back to Course List</a>
+        </div>
+    </div>
+  </div>
+{% endblock %}
