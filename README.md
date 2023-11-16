@@ -1,4 +1,4 @@
-# WashU 5033S Final Project: Rapid Prototype Development and Creative Programming
+# WashU CSE 503S Final Project: Rapid Prototype Development and Creative Programming
 
 This repository contains the final project for the WashU 5033S course, focusing on Rapid Prototype Development and Creative Programming. For more information about the course, refer to the [CSE 503S Online Textbook](https://classes.engineering.wustl.edu/cse330/index.php?title=CSE_330_Online_Textbook_-_Table_of_Contents).
 
