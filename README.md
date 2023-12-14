@@ -28,3 +28,7 @@ This repository contains the final project for the WashU 5033S course, focusing 
 
 ### Creative Portion (10 points)
 - **10** Leave comments or messages to the course, and can modify or delete
+
+### Website Example
+![ff310a22c8bf0dfa14cfa5bbdbd21d2](https://github.com/YingXu001/Online-Course-Platform-Django/assets/50728665/3a8dca7a-256e-49a4-9b9a-ebfa864fdda0)
+
